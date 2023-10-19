@@ -150,7 +150,6 @@ class HtmlParser extends StatefulWidget {
 
 class _HtmlParserState extends State<HtmlParser> {
   late StyledElement tree;
-
   @override
   void didChangeDependencies() {
     prepareTree();
@@ -158,16 +157,22 @@ class _HtmlParserState extends State<HtmlParser> {
   }
 
   void prepareTree() {
-    // Preparing Step
-    prepareHtmlTree();
 
-    // Styling Step
-    beforeStyleTree(tree);
-    styleTree();
+    try {
+      // Preparing Step
+      prepareHtmlTree();
 
-    // Processing Step
-    beforeProcessTree(tree);
-    processTree();
+      // Styling Step
+      beforeStyleTree(tree);
+      styleTree();
+
+      // Processing Step
+      beforeProcessTree(tree);
+      processTree();
+    } catch (e) {
+      print('Error in html_parser: $e');
+    }
+    
   }
 
   /// As the widget [build]s, the HTML data is processed into a tree of [StyledElement]s,

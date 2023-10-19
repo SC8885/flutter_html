@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/src/css_parser.dart';
@@ -661,10 +662,10 @@ enum ListStyleType {
 
   const ListStyleType(this.counterStyle);
 
-  factory ListStyleType.fromName(String name) {
-    return ListStyleType.values.firstWhere((value) {
+ factory ListStyleType.fromName(String name) {
+    return ListStyleType.values.firstWhereOrNull((value) {
       return name == value.counterStyle;
-    });
+    }) ?? ListStyleType.disc;
   }
 }
 

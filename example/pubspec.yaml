@@ -8,11 +8,15 @@ environment:
 
 dependencies:
   flutter_html:
-    path: ..
+    flutter_html: ^3.0.0-beta.2
   flutter_html_all:
     path: ../packages/flutter_html_all
   flutter:
     sdk: flutter
+
+dependency_overrides:
+  flutter_html:
+    path: ..
 
 dev_dependencies:
   flutter_test:
